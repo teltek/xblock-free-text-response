@@ -19,6 +19,7 @@ from xblock.fragment import Fragment
 from xblock.validation import ValidationMessage
 from xblockutils.studio_editable import StudioEditableXBlockMixin
 from .mixins import EnforceDueDates
+from .render import render_template
 
 
 @XBlock.needs("i18n")
@@ -271,7 +272,7 @@ class FreeTextResponse(EnforceDueDates, StudioEditableXBlockMixin, XBlock):
                 'word_count_message': self._get_word_count_message(),
             }
         )
-        template = get_template('freetextresponse_view.html')
+        template = render_template('templates/freetextresponse_view.html')
         fragment = self.build_fragment(
             template,
             context,
